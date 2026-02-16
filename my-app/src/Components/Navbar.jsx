@@ -16,19 +16,20 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          <Link className="hover:text-[#ffba00] transition">Home</Link>
-          <Link className="hover:text-[#ffba00] transition">Shop</Link>
-          <Link className="hover:text-[#ffba00] transition">About</Link>
-          <Link className="hover:text-[#ffba00] transition">Contact</Link>
+          <Link to={"/"} className="hover:text-[#ffba00] transition">Home</Link>
+          <Link to={"/shop"} className="hover:text-[#ffba00] transition">Shop</Link>
+          <Link  to={"/about"} className="hover:text-[#ffba00] transition">About</Link>
+          <Link to={"/contact"} className="hover:text-[#ffba00] transition">Contact</Link>
 
-          <Link className="relative hover:text-[#ffba00] transition">
+          <Link to={"/cart"} className="relative hover:text-[#ffba00] transition">
             <ShoppingCart />
             <span className="absolute -top-2 -right-3 bg-[#ffba00] text-black text-xs px-2 rounded-full">
               2
             </span>
           </Link>
-
+            <Link to={"/auth"} className="hover:text-[#ffba00] transition">
           <User className="hover:text-[#ffba00] cursor-pointer" />
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}

@@ -1,3 +1,5 @@
+import React from "react";
+import { Link } from "react-router-dom";
 export default function Home() {
   const categories = {
     watches: [
@@ -44,9 +46,11 @@ export default function Home() {
             <p className="mt-6 text-gray-400">
               Best quality products at unbeatable prices.
             </p>
+            <Link to="/shop">
             <button className="mt-8 bg-[#ffba00] text-black px-6 py-3 rounded-lg font-semibold hover:scale-105 transition">
               Shop Now
             </button>
+            </Link>
           </div>
 
           <img

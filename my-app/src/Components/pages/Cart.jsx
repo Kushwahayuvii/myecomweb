@@ -1,117 +1,90 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Cart = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "Wireless Headphones",
-      price: 1999,
-      quantity: 1,
-      image:
-        "https://images.unsplash.com/photo-1518449038197-48f0c7b9b2a3?w=500",
-    },
-    {
-      id: 2,
-      name: "Smart Watch",
-      price: 2999,
-      quantity: 1,
-      image:
-        "https://images.unsplash.com/photo-1517433456452-f9633a875f6f?w=500",
-    },
-  ]);
+const fmt = (n) => `₹${n.toLocaleString("en-IN")}`;
 
-  const increaseQty = (id) => {
-    setCartItems(
-      cartItems.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
+const styles = {
+  primaryBtn: {
+    display: "block", width: "100%", padding: "15px",
+    background: "#0f172a", color: "#fff", border: "none",
+    borderRadius: 14, fontSize: 15, fontWeight: 700,
+    cursor: "pointer", marginTop: 24, letterSpacing: 0.3,
+    fontFamily: "'DM Sans', sans-serif",
+  },
+  qBtn: {
+    width: 30, height: 30, border: "1px solid #e2e8f0",
+    borderRadius: 8, background: "#f8fafc", cursor: "pointer",
+    fontSize: 16, fontWeight: 700, color: "#0f172a",
+    display: "flex", alignItems: "center", justifyContent: "center",
+  },
+};
 
-  const decreaseQty = (id) => {
-    setCartItems(
-      cartItems.map((item) =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
-  };
+const Cart = ({ items, setItems, onNext }) => {
+  const inc = (id) =>
+    setItems(items.map((it) => (it.id === id ? { ...it, quantity: it.quantity + 1 } : it)));
 
-  const removeItem = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
+  const dec = (id) =>
+    setItems(items.map((it) =>
+      it.id === id && it.quantity > 1 ? { ...it, quantity: it.quantity - 1 } : it
+    ));
 
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  const remove = (id) => setItems(items.filter((it) => it.id !== id));
+
+  const total = items.reduce((s, it) => s + it.price * it.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-5">
-      <h1 className="text-3xl font-bold text-center mb-8">🛒 Your Cart</h1>
+    <div>
+      <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 26, marginBottom: 20, color: "#0f172a" }}>
+        🛒 Your Cart
+      </h2>
 
-      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
-        {cartItems.length === 0 ? (
-          <p className="text-center text-gray-500">Your cart is empty.</p>
-        ) : (
-          <>
-            {cartItems.map((item) => (
-              <div
-                key={item.id}
-                className="flex items-center justify-between border-b py-4"
-              >
-                <div className="flex items-center gap-4">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-20 h-20 object-cover rounded"
-                  />
-                  <div>
-                    <h2 className="font-semibold">{item.name}</h2>
-                    <p className="text-gray-500">₹{item.price}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
+      {items.length === 0 ? (
+        <div style={{ textAlign: "center", padding: "60px 0", color: "#94a3b8" }}>
+          <div style={{ fontSize: 48 }}>🛍️</div>
+          <p style={{ marginTop: 12, fontSize: 16 }}>Your cart is empty</p>
+        </div>
+      ) : (
+        <>
+          {items.map((item) => (
+            <div key={item.id} style={{
+              display: "flex", alignItems: "center", gap: 16,
+              padding: "16px 0", borderBottom: "1px solid #f1f5f9",
+            }}>
+              <img
+                src={item.image}
+                alt={item.name}
+                style={{ width: 72, height: 72, borderRadius: 12, objectFit: "cover" }}
+              />
+              <div style={{ flex: 1 }}>
+                <div style={{ fontWeight: 600, color: "#1e293b", fontSize: 15 }}>{item.name}</div>
+                <div style={{ color: "#64748b", fontSize: 13, marginTop: 2 }}>{fmt(item.price)} each</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 10 }}>
+                  <button onClick={() => dec(item.id)} style={styles.qBtn}>−</button>
+                  <span style={{ fontWeight: 700, minWidth: 20, textAlign: "center" }}>{item.quantity}</span>
+                  <button onClick={() => inc(item.id)} style={styles.qBtn}>+</button>
                   <button
-                    onClick={() => decreaseQty(item.id)}
-                    className="bg-gray-300 px-3 py-1 rounded"
-                  >
-                    -
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button
-                    onClick={() => increaseQty(item.id)}
-                    className="bg-gray-300 px-3 py-1 rounded"
-                  >
-                    +
-                  </button>
-                </div>
-
-                <div className="text-right">
-                  <p className="font-semibold">
-                    ₹{item.price * item.quantity}
-                  </p>
-                  <button
-                    onClick={() => removeItem(item.id)}
-                    className="text-red-500 text-sm mt-1"
+                    onClick={() => remove(item.id)}
+                    style={{ background: "none", border: "none", color: "#ef4444", fontSize: 12, cursor: "pointer", marginLeft: 8 }}
                   >
                     Remove
                   </button>
                 </div>
               </div>
-            ))}
-
-            <div className="text-right mt-6">
-              <h2 className="text-xl font-bold">Total: ₹{totalPrice}</h2>
-              <button className="mt-4 bg-black text-white px-6 py-2 rounded hover:bg-gray-800">
-                Proceed to Checkout
-              </button>
+              <div style={{ fontWeight: 700, color: "#0f172a", fontSize: 16 }}>
+                {fmt(item.price * item.quantity)}
+              </div>
             </div>
-          </>
-        )}
-      </div>
+          ))}
+
+          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 24, fontWeight: 700, fontSize: 18, color: "#0f172a" }}>
+            <span>Total</span>
+            <span>{fmt(total)}</span>
+          </div>
+
+          <button onClick={onNext} style={styles.primaryBtn}>
+            Proceed to Checkout →
+          </button>
+        </>
+      )}
     </div>
   );
 };

@@ -9,7 +9,7 @@ import Home from './Components/pages/Home'
 import Shop from './Components/pages/Shop'
 import About from './Components/pages/About'
 import Contact from './Components/pages/Contact'
-import Cart from './Components/pages/Cart'
+import Cart from './Components/pages/CartPage'
 import Auth from './Components/pages/Auth'
 
 function App() {

@@ -44,12 +44,17 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {open && (
         <div className="md:hidden bg-[#1e293b] px-6 pb-4 flex flex-col gap-4 text-sm">
-          <Link>Home</Link>
-          <Link>Shop</Link>
-          <Link>About</Link>
-          <Link>Contact</Link>
-          <Link>Cart</Link>
-          <Link>Login</Link>
+            <Link to="/" onClick={() => setOpen(false)}>Home</Link>
+    
+    <Link to="/shop" onClick={() => setOpen(false)}>Shop</Link>
+    
+    <Link to="/about" onClick={() => setOpen(false)}>About</Link>
+    
+    <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
+    
+    <Link to="/cart" onClick={() => setOpen(false)}>Cart</Link>
+    
+    <Link to="/auth" onClick={() => setOpen(false)}>Login</Link>
         </div>
       )}
     </nav>

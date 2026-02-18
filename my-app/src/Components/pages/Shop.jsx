@@ -65,7 +65,7 @@ export default function Shop() {
             <p className="text-[#ffba00] font-bold mt-2">
               ₹{product.price}
             </p>
-
+               
             <button className="mt-4 w-full bg-[#ffba00] text-black py-2 rounded-lg font-semibold hover:bg-yellow-400 transition">
               Add to Cart
             </button>

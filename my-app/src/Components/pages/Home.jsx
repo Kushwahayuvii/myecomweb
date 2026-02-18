@@ -52,11 +52,11 @@ export default function Home() {
   };
 
   const sections = [
-    { key: "watches",     label: "⌚ Smart Watches",      bg: "bg-[#1e293b]", card: "bg-[#0f172a]" },
-    { key: "shoes",       label: "👟 Premium Shoes",       bg: "bg-[#0f172a]", card: "bg-[#1e293b]" },
-    { key: "smartphones", label: "📱 Latest Smartphones",  bg: "bg-[#1e293b]", card: "bg-[#0f172a]" },
-    { key: "perfumes",    label: "🌸 Luxury Perfumes",     bg: "bg-[#0f172a]", card: "bg-[#1e293b]" },
-    { key: "backpacks",   label: "🎒 Stylish Backpacks",   bg: "bg-[#1e293b]", card: "bg-[#0f172a]" },
+    { key: "watches",     label: " Smart Watches",      bg: "bg-[#1e293b]", card: "bg-[#0f172a]" },
+    { key: "shoes",       label: " Premium Shoes",       bg: "bg-[#0f172a]", card: "bg-[#1e293b]" },
+    { key: "smartphones", label: " Latest Smartphones",  bg: "bg-[#1e293b]", card: "bg-[#0f172a]" },
+    { key: "perfumes",    label: " Luxury Perfumes",     bg: "bg-[#0f172a]", card: "bg-[#1e293b]" },
+    { key: "backpacks",   label: " Stylish Backpacks",   bg: "bg-[#1e293b]", card: "bg-[#0f172a]" },
   ];
 
   return (

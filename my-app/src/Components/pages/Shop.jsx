@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCart } from "../context/CartContext";  // ← Step 1: Import
+import { useCart } from "../context/CartContext.jsx";  // ← Step 1: Import
 
 export default function Shop() {
   const { addToCart } = useCart();                    // ← Step 2: Hook se addToCart lo

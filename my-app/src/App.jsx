@@ -9,6 +9,8 @@ import About from './Components/pages/About'
 import Contact from './Components/pages/Contact'
 import CartPage from './Components/pages/CartPage'     // ← CartPage (not Cart)
 import Auth from './Components/pages/Auth'
+import ProductDetail from './Components/pages/ProductDetail';
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart"   element={<CartPage />} />
           <Route path="/auth"   element={<Auth />}     />
+          <Route path="/product/:id" element={<ProductDetail />} />
         </Routes>
         <Footer />
       </div>

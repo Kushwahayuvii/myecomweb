@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SUCCESS_INFO = [
   { icon: "📧", text: "Confirmation email sent" },
@@ -35,9 +36,10 @@ const Success = () => {
           </div>
         ))}
       </div>
-
+         
+         <Link to={"/shop"}>
       <button
-        onClick={() => window.location.reload()}
+        
         style={{
           padding: "14px 32px", background: "#0f172a", color: "#fff",
           border: "none", borderRadius: 14, fontSize: 15, fontWeight: 700,
@@ -46,6 +48,7 @@ const Success = () => {
       >
         Continue Shopping
       </button>
+      </Link>
     </div>
   );
 };

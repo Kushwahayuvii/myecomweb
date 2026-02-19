@@ -136,9 +136,11 @@ export default function Home() {
       <section className="py-20 text-center bg-[#0f172a]">
         <h2 className="text-3xl font-bold">Get 20% Off Today</h2>
         <p className="mt-4 text-gray-400">Sign up now & enjoy special deals.</p>
+        <Link  to={"/auth"}>
         <button className="mt-6 bg-[#ffba00] text-black px-6 py-3 rounded-lg font-semibold hover:scale-105 transition">
           Sign Up
         </button>
+        </Link>
       </section>
     </div>
   );
